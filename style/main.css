@@ -1,0 +1,308 @@
+main#main {
+    width: 100%;
+
+    margin-bottom: 5rem;
+    
+    justify-content: center;
+    align-items: center;
+}
+
+main#main,
+div#area-sound,
+div#area-initial,
+div#area-audio,
+div#play-sound,
+div#area-button-sound,
+div.sound-chosen
+{
+    display: flex;
+}
+
+div#area-sound {
+    width: calc(100% - 200px);
+    padding: 5rem 0;
+
+    margin-top: 5rem;
+
+    background-color: var(--blue-white);
+
+    border-radius: 20px;
+
+}
+
+div#area-sound,
+div#area-initial {
+    justify-content: space-around;
+    align-items: center;
+}
+
+div#area-initial {
+    width: 100%;
+}
+
+li.button-note {
+    list-style-type: none;
+
+    padding: 10px;
+
+    font-size: 20px;
+
+    color: var(--blue-white);
+
+    margin: 5px;
+
+    background-color: var(--blue-aqua);
+
+    transition: all 200ms;
+
+    cursor: pointer;
+}
+
+li.selected {
+    background-color: var(--aqua-dark);
+}
+
+button#button-play {
+    padding: 50px 100px;
+
+    background-color: var(--blue-aqua);
+
+    border: none;
+    
+    color: var(--blue-white);
+    
+    font-size: 40px;
+
+    animation-duration: 200ms;
+}
+
+.selected-start-button {
+    animation-name: grow-on;
+}
+
+@keyframes grow-on {
+    0% {
+        transform: scale(1);
+    }
+
+    50% {
+        transform: scale(1.2);
+    }
+    
+    100% {
+        transform: scale(1);
+    }
+}
+
+button#button-play,
+li.button-note
+{
+    border-radius: 20px;
+    
+    cursor: pointer;
+    
+}
+
+button#button-play,
+li.button-note,
+div#area-initial,
+button#button-next-note,
+div.sound-chosen
+{
+    transition: all 200ms;
+}
+
+div#area-audio {
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+
+    width: 100%;
+    height: 100%;
+}
+
+div#play-sound {
+    width: 150px;
+    height: 150px;
+
+    background-color: var(--blue-aqua);
+
+    border-radius: 100%;
+
+    justify-content: center;
+    align-items: center;
+
+    transition: all 200ms;
+
+    cursor: pointer;
+
+    position: relative;
+
+    margin-bottom: 2rem;
+}
+
+div#play-sound:hover,
+div.sound-chosen:hover,
+button#button-next-note:hover,
+li.button-note:hover
+{
+    transform: scale(1.2);
+}
+
+.jump-out {
+    animation-name: jump-out;
+    animation-duration: 200ms;
+}
+
+@keyframes jump-out {
+    0% {
+        transform: scale(1.2);
+    }
+
+    50% {
+        transform: scale(1.5);
+    }
+
+    100% {
+        transform: scale(1.2);
+    }
+}
+
+div#area-button-sound {
+    margin-bottom: 4rem;
+
+    flex-wrap: wrap;
+}
+
+div#area-button-sound, 
+div.sound-chosen 
+{
+    justify-content: center;
+    align-items: center;
+}
+
+div.sound-chosen {
+    width: 50px;
+    height: 50px;
+
+    background-color: var(--blue-aqua);
+
+    border-radius: 100%;
+
+    padding: 10px;
+
+    color: var(--blue-white);
+
+    font-size: 25px;
+
+    margin: 10px;
+
+    cursor: pointer;
+}
+
+.selected-note {
+    animation: selected-note 200ms;
+}
+
+@keyframes selected-note {
+    0% {
+        background-color: var(--blue-aqua);
+    }
+
+    50% {
+        background-color: var(--aqua-dark);
+    }
+
+    100% {
+        background-color: var(--blue-aqua);
+    }
+}
+
+.note-wrong {
+    animation: note-wrong 200ms;
+}
+
+@keyframes note-wrong {
+    0% {
+        left: 0px;
+    }
+
+    25% {
+        left: 10px;
+    }
+
+    50% {
+        left: -20px;
+    }
+
+    75% {
+        left: 10px;
+    }
+
+    100% {
+        left: 0px;
+    }
+}
+
+button#button-next-note {
+    background-color: var(--blue-aqua);
+
+    border: none;
+
+    padding: 10px 20px;
+
+    border-radius: 20px;
+
+    font-size: 20px;
+
+    color: var(--blue-white);
+}
+
+@media screen and (max-width: 652px) {
+    div#play-sound:hover,
+    div.sound-chosen:hover,
+    button#button-next-note:hover,
+    li.button-note:hover
+    {
+        transform: none;
+    }
+
+    div.sound-chosen:active {
+        transform: scale(1.2);
+    }
+
+    div#area-sound {
+        width: calc(100% - 100px);
+    
+        margin-top: 2.7rem;
+    }
+
+    div#area-initial {
+        flex-direction: column;
+
+        height: 100%;
+    }
+
+    ul#options {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-wrap: wrap;
+
+        margin: 0 2rem 3rem;
+    }
+
+    li.button-note {
+        font-size: 2rem;
+    }
+
+    button#button-play {
+        padding: 25px 50px;
+    }
+}
+
+@media screen and (max-width: 368px) {
+    div#area-sound {
+        padding: 2.5rem 0;
+    }
+}

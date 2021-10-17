@@ -8,8 +8,13 @@
 }
 
 :root {
-    --blue-white: #E8F0F2;
-    --aqua: #A2DBFA;
-    --blue-aqua: #39A2DB;
-    --aqua-dark: #053742;
+    /* --blue-white: #FFF1D0;
+    --aqua: #FCE7CA;
+    --blue-aqua: #DB7688;
+    --aqua-dark: #CF4D6F; */
+
+    --papaya-whip: #FFF1D0;
+    --blanched-almond: #FCE7CA;
+    --shimmering-blush: #DB7688;
+    --ruber: #CF4D6F;
 }

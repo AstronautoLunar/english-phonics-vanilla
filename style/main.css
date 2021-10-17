@@ -24,7 +24,7 @@ div#area-sound {
 
     margin-top: 5rem;
 
-    background-color: var(--blue-white);
+    background-color: var(--papaya-whip);
 
     border-radius: 20px;
 
@@ -47,11 +47,11 @@ li.button-note {
 
     font-size: 20px;
 
-    color: var(--blue-white);
+    color: var(--papaya-whip);
 
     margin: 5px;
 
-    background-color: var(--blue-aqua);
+    background-color: var(--shimmering-blush);
 
     transition: all 200ms;
 
@@ -59,17 +59,17 @@ li.button-note {
 }
 
 li.selected {
-    background-color: var(--aqua-dark);
+    background-color: var(--ruber);
 }
 
 button#button-play {
     padding: 50px 100px;
 
-    background-color: var(--blue-aqua);
+    background-color: var(--shimmering-blush);
 
     border: none;
     
-    color: var(--blue-white);
+    color: var(--papaya-whip);
     
     font-size: 40px;
 
@@ -125,7 +125,7 @@ div#play-sound {
     width: 150px;
     height: 150px;
 
-    background-color: var(--blue-aqua);
+    background-color: var(--shimmering-blush);
 
     border-radius: 100%;
 
@@ -185,13 +185,13 @@ div.sound-chosen {
     width: 50px;
     height: 50px;
 
-    background-color: var(--blue-aqua);
+    background-color: var(--shimmering-blush);
 
     border-radius: 100%;
 
     padding: 10px;
 
-    color: var(--blue-white);
+    color: var(--papaya-whip);
 
     font-size: 25px;
 
@@ -206,15 +206,15 @@ div.sound-chosen {
 
 @keyframes selected-note {
     0% {
-        background-color: var(--blue-aqua);
+        background-color: var(--shimmering-blush);
     }
 
     50% {
-        background-color: var(--aqua-dark);
+        background-color: var(--ruber);
     }
 
     100% {
-        background-color: var(--blue-aqua);
+        background-color: var(--shimmering-blush);
     }
 }
 
@@ -245,7 +245,7 @@ div.sound-chosen {
 }
 
 button#button-next-note {
-    background-color: var(--blue-aqua);
+    background-color: var(--shimmering-blush);
 
     border: none;
 
@@ -255,7 +255,7 @@ button#button-next-note {
 
     font-size: 20px;
 
-    color: var(--blue-white);
+    color: var(--papaya-whip);
 }
 
 @media screen and (max-width: 652px) {

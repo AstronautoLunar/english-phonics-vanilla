@@ -156,7 +156,7 @@ const controlsSound = {
             clearTimeout(timerReturnStyleDivPlay);
 
             timerReturnStyleDivPlay = setTimeout(() => {
-                divPlayMusic.style.backgroundColor = "var(--blue-aqua)";
+                divPlayMusic.style.backgroundColor = "var(--shimmering-blush)";
 
                 imagePlay.src = "./assets/icons/icon-play.svg";
             }, 1500);

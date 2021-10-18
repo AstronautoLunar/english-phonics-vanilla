@@ -1,0 +1,9 @@
+export const areaOptions = window.document.querySelector('ul#options');
+export const buttonStart = window.document.querySelector('button#button-play');
+export const areaInitial = window.document.querySelector('div#area-initial');
+export const areaSound = window.document.querySelector("div#area-sound");
+export const divAreaAudio = window.document.createElement('div');
+export const divButtonsSoundLetter = window.document.createElement('div');
+export const divPlayMusic = window.document.createElement('div');
+export const divAreaButtonsSoundLetter = window.document.createElement('div');
+export const imagePlay = new Image();

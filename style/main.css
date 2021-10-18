@@ -13,7 +13,7 @@ div#area-initial,
 div#area-audio,
 div#play-sound,
 div#area-button-sound,
-div.sound-chosen
+div.letter-sound
 {
     display: flex;
 }
@@ -107,7 +107,7 @@ button#button-play,
 li.button-group,
 div#area-initial,
 button#button-next-note,
-div.sound-chosen
+div.letter-sound
 {
     transition: all 200ms;
 }
@@ -142,7 +142,7 @@ div#play-sound {
 }
 
 div#play-sound:hover,
-div.sound-chosen:hover,
+div.letter-sound:hover,
 button#button-next-note:hover,
 li.button-note:hover
 {
@@ -175,13 +175,32 @@ div#area-button-sound {
 }
 
 div#area-button-sound, 
-div.sound-chosen 
+div.letter-sound
 {
     justify-content: center;
     align-items: center;
 }
 
-div.sound-chosen {
+/* div.sound-chosen {
+    width: 50px;
+    height: 50px;
+
+    background-color: var(--shimmering-blush);
+
+    border-radius: 100%;
+
+    padding: 10px;
+
+    color: var(--papaya-whip);
+
+    font-size: 25px;
+
+    margin: 10px;
+
+    cursor: pointer;
+} */
+
+div.letter-sound {
     width: 50px;
     height: 50px;
 
@@ -260,14 +279,14 @@ button#button-next-note {
 
 @media screen and (max-width: 652px) {
     div#play-sound:hover,
-    div.sound-chosen:hover,
+    div.letter-sound:hover,
     button#button-next-note:hover,
     li.button-note:hover
     {
         transform: none;
     }
 
-    div.sound-chosen:active {
+    div.letter-sound:active {
         transform: scale(1.2);
     }
 

@@ -1,83 +1,379 @@
 let start = false;
 
-const controlsSound = {
-    areaOptions: window.document.querySelector('ul#options'),
-    buttonStart: window.document.querySelector('button#button-play'),
-    areaInitial: window.document.querySelector('div#area-initial'),
-    areaSound: window.document.querySelector("div#area-sound"),
-    divAreaAudio: window.document.createElement('div'),
+class controlsApplication {
+    constructor() {
+        this._areaOptions = window.document.querySelector('ul#options');
+        this._buttonStart = window.document.querySelector('button#button-play');
+        this._areaInitial = window.document.querySelector('div#area-initial');
+        this._areaSound = window.document.querySelector("div#area-sound");
+        this._divAreaAudio = window.document.createElement('div');
+        this._divButtonsSoundLetter = window.document.createElement('div');
+        this._divPlayMusic = window.document.createElement('div');
+        this._divAreaButtonsSoundLetter = window.document.createElement('div');
 
-    noteHit: null,
+        this._noteHit = null;
+        this._storageGroupChosen = null;
+        this._selectedGroup = null;
+        this._indexGroupChosen = null;
+        this._indexGroupSoundChosen = null;
+        this._audio = new Audio();
+        this._allSoundsChosen = [];
 
-    storageNoteChosen: null,
+        this._groups = [
+            {
+                name: 'group1',
+                sound: [
+                    {
+                        name: 'a',
+                        src: './assets/audios/group1/a.mp3',
+                        alt: "audio sound a"
+                    },
+                    {
+                        name: 'i',
+                        src: './assets/audios/group1/i.mp3',
+                        alt: "audio sound i"
+                    },
+                    {
+                        name: 'n',
+                        src: './assets/audios/group1/n.mp3',
+                        alt: "audio sound n"
+                    },
+                    {
+                        name: 'p',
+                        src: './assets/audios/group1/p.mp3',
+                        alt: "audio sound p"
+                    },
+                    {
+                        name: 's',
+                        src: './assets/audios/group1/s.mp3',
+                        alt: "audio sound s"
+                    },
+                    {
+                        name: 't',
+                        src: './assets/audios/group1/t.mp3',
+                        alt: "audio sound t"
+                    },
+                ],
+                selected: false
+            },
+            {
+                name: 'group2',
+                sound: [
+                    {
+                        name: 'ck',
+                        src: './assets/audios/group2/ck.mp3',
+                        alt: "audio sound ck"
+                    },
+                    {
+                        name: 'd',
+                        src: './assets/audios/group2/d.mp3',
+                        alt: "audio sound d"
+                    },
+                    {
+                        name: 'e',
+                        src: './assets/audios/group2/e.mp3',
+                        alt: "audio sound e"
+                    },
+                    {
+                        name: 'h',
+                        src: './assets/audios/group2/h.mp3',
+                        alt: "audio sound h"
+                    },
+                    {
+                        name: 'm',
+                        src: './assets/audios/group2/m.mp3',
+                        alt: "audio sound m"
+                    },
+                    {
+                        name: 'r',
+                        src: './assets/audios/group2/r.mp3',
+                        alt: "audio sound r"
+                    },
+                ],
+                selected: false
+            },
+            {
+                name: 'group3',
+                sound: [
+                    {
+                        name: 'b',
+                        src: './assets/audios/group3/b.mp3',
+                        alt: "audio sound b"
+                    },
+                    {
+                        name: 'f',
+                        src: './assets/audios/group3/f.mp3',
+                        alt: "audio sound f"
+                    },
+                    {
+                        name: 'g',
+                        src: './assets/audios/group3/g.mp3',
+                        alt: "audio sound g"
+                    },
+                    {
+                        name: 'l',
+                        src: './assets/audios/group3/l.mp3',
+                        alt: "audio sound l"
+                    },
+                    {
+                        name: 'o',
+                        src: './assets/audios/group3/o.mp3',
+                        alt: "audio sound o"
+                    },
+                    {
+                        name: 'u',
+                        src: './assets/audios/group3/u.mp3',
+                        alt: "audio sound u"
+                    },
+                ],
+                selected: false
+            },
+            {
+                name: 'group4',
+                sound: [
+                    {
+                        name: 'ai',
+                        src: './assets/audios/group4/ai.mp3',
+                        alt: "audio sound ai"
+                    },
+                    {
+                        name: 'ee',
+                        src: './assets/audios/group4/ee.mp3',
+                        alt: "audio sound ee"
+                    },
+                    {
+                        name: 'ie',
+                        src: './assets/audios/group4/ie.mp3',
+                        alt: "audio sound ie"
+                    },
+                    {
+                        name: 'j',
+                        src: './assets/audios/group4/j.mp3',
+                        alt: "audio sound j"
+                    },
+                    {
+                        name: 'oa',
+                        src: './assets/audios/group4/oa.mp3',
+                        alt: "audio sound oa"
+                    },
+                    {
+                        name: 'or',
+                        src: './assets/audios/group4/or.mp3',
+                        alt: "audio sound or"
+                    },
+                ],
+                selected: false
+            },
+            {
+                name: 'group5',
+                sound: [
+                    {
+                        name: 'ng',
+                        src: './assets/audios/group5/ng.mp3',
+                        alt: "audio sound ng"
+                    },
+                    {
+                        name: 'oo-strong',
+                        src: './assets/audios/group5/oo-strong.mp3',
+                        alt: "audio sound oo-strong"
+                    },
+                    {
+                        name: 'oo',
+                        src: './assets/audios/group5/oo.mp3',
+                        alt: "audio sound oo"
+                    },
+                    {
+                        name: 'v',
+                        src: './assets/audios/group5/v.mp3',
+                        alt: "audio sound v"
+                    },
+                    {
+                        name: 'w',
+                        src: './assets/audios/group5/w.mp3',
+                        alt: "audio sound w"
+                    },
+                    {
+                        name: 'z',
+                        src: './assets/audios/group5/z.mp3',
+                        alt: "audio sound z"
+                    },
+                ],
+                selected: false
+            },
+            {
+                name: 'group6',
+                sound: [
+                    {
+                        name: 'ch',
+                        src: './assets/audios/group6/ch.mp3',
+                        alt: "audio sound ch"
+                    },
+                    {
+                        name: 'sh',
+                        src: './assets/audios/group6/sh.mp3',
+                        alt: "audio sound sh"
+                    },
+                    {
+                        name: 'th-blow',
+                        src: './assets/audios/group6/th-blow.mp3',
+                        alt: "audio sound th-blow"
+                    },
+                    {
+                        name: 'th',
+                        src: './assets/audios/group6/th.mp3',
+                        alt: "audio sound th"
+                    },
+                    {
+                        name: 'x',
+                        src: './assets/audios/group6/x.mp3',
+                        alt: "audio sound x"
+                    },
+                    {
+                        name: 'y',
+                        src: './assets/audios/group6/y.mp3',
+                        alt: "audio sound y"
+                    },
+                ],
+                selected: false
+            },
+            {
+                name: 'group7',
+                sound: [
+                    {
+                        name: 'ar',
+                        src: './assets/audios/group7/ar.mp3',
+                        alt: "audio sound ar"
+                    },
+                    {
+                        name: 'er',
+                        src: './assets/audios/group7/er.mp3',
+                        alt: "audio sound er"
+                    },
+                    {
+                        name: 'oi',
+                        src: './assets/audios/group7/oi.mp3',
+                        alt: "audio sound oi"
+                    },
+                    {
+                        name: 'ou',
+                        src: './assets/audios/group7/ou.mp3',
+                        alt: "audio sound ou"
+                    },
+                    {
+                        name: 'qu',
+                        src: './assets/audios/group7/qu.mp3',
+                        alt: "audio sound qu"
+                    },
+                    {
+                        name: 'ue',
+                        src: './assets/audios/group7/ue.mp3',
+                        alt: "audio sound ue"
+                    },
+                ],
+                selected: false
+            },
+        ]
+    }
 
-    audio: new Audio(),
+    get areaOptions() {
+        return this._areaOptions;
+    }
+    get buttonStart() {
+        return this._buttonStart;
+    }
+    get areaInitial() {
+        return this._areaInitial;
+    }
+    get areaSound() {
+        return this._areaSound;
+    }
+    get divAreaAudio() {
+        return this._divAreaAudio;
+    }
+    get divButtonsSoundLetter() {
+        return this._divButtonsSoundLetter;
+    }
+    get divPlayMusic() {
+        return this._divPlayMusic;
+    }
+    get divAreaButtonsSoundLetter() {
+        return this._divAreaButtonsSoundLetter;
+    }
 
-    sounds: [
-        {
-            id: 0,
-            name: "C",
-            src: "./assets/audios/C-dó.mp3",
-            selected: false
-        },
-        {
-            id: 1,
-            name: "D",
-            src: "./assets/audios/D-ré.mp3",
-            selected: false
-        },
-        {
-            id: 2,
-            name: "E",
-            src: "./assets/audios/E-mí.mp3",
-            selected: false
-        },
-        {
-            id: 3,
-            name: "F",
-            src: "./assets/audios/F-fá.mp3",
-            selected: false
-        },
-        {
-            id: 4,
-            name: "G",
-            src: "./assets/audios/G-sól.mp3",
-            selected: false
-        },
-        {
-            id: 5,
-            name: "A",
-            src: "./assets/audios/A-lá.mp3",
-            selected: false
-        },
-        {
-            id: 6,
-            name: "B",
-            src: "./assets/audios/B-sí.mp3",
-            selected: false
-        },
-    ],
+    set noteHit(value) {
+        this._noteHit = value;
+    }
+
+    get noteHit() {
+        return this._noteHit;
+    }
+    
+    set storageGroupChosen(value) {
+        this._storageGroupChosen = value;
+    }
+    get storageGroupChosen() {
+        return this._storageGroupChosen;
+    }
+
+    set selectedGroup(value) {
+        this._selectedGroup = value;
+    }
+    get selectedGroup() {
+        return this._selectedGroup;
+    }
+
+    set indexGroupChosen(value) {
+        this._indexGroupChosen = value;
+    }
+    get indexGroupChosen()  {
+        return this._indexGroupChosen
+    }
+
+    set indexGroupSoundChosen(value) {
+        this._indexGroupSoundChosen = value;
+    }
+    get indexGroupSoundChosen() {
+        return this._indexGroupSoundChosen;
+    }
+
+    set audio(value) {
+        this._audio = value;
+    }
+    get audio() {
+        return this._audio;
+    }
+    
+    set allSoundsChosen(value) {
+        this._allSoundsChosen = value;
+    }
+    get allSoundsChosen() {
+        return this._allSoundsChosen;
+    }
+
+    get groups() {
+        return this._groups;
+    }
 
     drawControlsInitial() {
-        for(let i of this.sounds) {
-            this.areaOptions.innerHTML += `<li class="button-note">${i.name}</li>`
+        for(let i of this.groups) {
+            this.areaOptions.innerHTML += `<li class="button-group">${i.name}</li>`
         }
-    },
+    }
 
-    loadButtonNote() {
-        const buttonsNote = window.document.querySelectorAll("li.button-note");
+    loadButtonGroup() {
+        let buttonsGroup = window.document.querySelectorAll("li.button-group");
 
-        for(let i = 0; i <= buttonsNote.length; i++) {
+        for(let i = 0; i <= buttonsGroup.length; i++) {
 
-            if(buttonsNote[i] !== undefined) {
-                buttonsNote[i].onclick = ({ target }) => {
+            if(buttonsGroup[i] !== undefined) {
+                buttonsGroup[i].onclick = ({ target }) => {
                     target.classList.toggle('selected');
-                    this.sounds[i].selected = !this.sounds[i].selected;
+                    this.groups[i].selected = !this.groups[i].selected;
                 }
             }
         }
-    },
-    
+    }
+
     start() {
         this.buttonStart.onclick = ({ target }) => {
             target.classList.add("selected-start-button");
@@ -96,55 +392,87 @@ const controlsSound = {
             start = true;
 
             setTimeout(() => {
+                this.loadChosenGroups();
                 this.loadInterface();
             }, 800)
         }
-    },
-    
-    loadInterface() {
-        let chosenSounds = this.sounds.filter(sound => sound.selected === true);
-        this.storageNoteChosen = chosenSounds;
+    }
 
-        let selectedNote = null;
+    loadChosenGroups() {
+        this.storageGroupChosen = this.groups.filter(group => group.selected === true);
+    }
 
-        function randomNumber() {
-            soundChosenPlayIndex = Math.floor(Math.random() * chosenSounds.length);
-        }
-        randomNumber();
-        
+    randomNumber() {
+        this.indexGroupChosen = Math.floor(Math.random() * this.storageGroupChosen.length);
+        this.indexGroupSoundChosen = Math.floor(Math.random() * 6);
+    }
+
+    renderAreaAudio() {
         this.divAreaAudio.setAttribute('id', 'area-audio');
         this.areaSound.appendChild(this.divAreaAudio);
-        
-        const divPlayMusic = window.document.createElement('div');
-        divPlayMusic.setAttribute('id', 'play-sound');
-        this.divAreaAudio.appendChild(divPlayMusic);
+    }
 
+    createDivPlayMusic() {
+        this.divPlayMusic.setAttribute('id', 'play-sound');
+        this.divAreaAudio.appendChild(this.divPlayMusic);
+    }
+
+    createImagePlay() {
         const imagePlay = new Image();
         imagePlay.src = "./assets/icons/icon-play.svg";
         imagePlay.setAttribute('alt', 'icon play sound')
         imagePlay.style.width = "35%";
-        divPlayMusic.appendChild(imagePlay);
+        this.divPlayMusic.appendChild(imagePlay);
+    }
 
-        this.audio.src = chosenSounds[soundChosenPlayIndex].src;
+    renderAudioAndEvent() {
+        this.audio.src = this.storageGroupChosen[this.indexGroupChosen].sound[this.indexGroupSoundChosen].src;
 
-        let timerDivPlayMusic;
+        let timerDivPlayMusic
 
-        divPlayMusic.onclick = () => {
-            divPlayMusic.classList.add('jump-out');
+        this.divPlayMusic.onclick = () => {
+            this.divPlayMusic.classList.add('jump-out');
 
             clearTimeout(timerDivPlayMusic);
             timerDivPlayMusic = setTimeout(() => {
-                divPlayMusic.classList.remove('jump-out');
+                this.divPlayMusic.classList.remove('jump-out');
             }, 200);
 
             this.audio.play();
         }
-        
-        const divButtonsSoundNote = window.document.createElement('div');
-        divButtonsSoundNote.setAttribute('id', 'area-button-sound');
-        this.divAreaAudio.appendChild(divButtonsSoundNote);
+    }
 
-        for(let i in chosenSounds) {
+    renderButtonsSoundLetter() {
+        divButtonsSoundLetter.setAttribute('id', 'area-button-sound');
+        this.divAreaAudio.appendChild(divButtonsSoundLetter);
+    }
+
+    renderAreaButtonsSoundLetter() {
+        this.divAreaButtonsSoundLetter.setAttribute('id', 'area-button-sound');
+        this.divAreaAudio.appendChild(this.divAreaButtonsSoundLetter);
+    }
+
+    // takeSoundsOutOfGroups() {
+    //     console.log(this.storageGroupChosen);
+    //     this.storageGroupChosen.forEach(item => {
+    //         this.allSoundsChosen.push(...item.sound);
+    //     });
+    // }
+
+    loadInterface() {
+        this.randomNumber();
+        this.renderAreaAudio();
+        this.createDivPlayMusic();
+        this.createImagePlay();
+        this.renderAudioAndEvent()
+        this.renderAreaButtonsSoundLetter();
+        this.takeSoundsOutOfGroups();
+
+        let timerDivPlayMusic;
+
+
+
+        for(let i in this.storageGroupChosen) {
             divButtonsSoundNote.innerHTML += `<div class="sound-chosen" data-key="${i}">${chosenSounds[i].name}</div>`
         }
 
@@ -229,6 +557,6 @@ const controlsSound = {
                 buttonNextNote.style.animation = "";
             }, 300)
         };
-    },
+    }
 }
 

@@ -40,7 +40,7 @@ div#area-initial {
     width: 100%;
 }
 
-li.button-note {
+li.button-group {
     list-style-type: none;
 
     padding: 10px;
@@ -95,7 +95,7 @@ button#button-play {
 }
 
 button#button-play,
-li.button-note
+li.button-group
 {
     border-radius: 20px;
     
@@ -104,7 +104,7 @@ li.button-note
 }
 
 button#button-play,
-li.button-note,
+li.button-group,
 div#area-initial,
 button#button-next-note,
 div.sound-chosen

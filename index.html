@@ -22,12 +22,15 @@
                     </button>
                 </div>
             </div>
+            
         </main>
         <script src='./script/main.js'></script>
         <script>
-            controlsSound.drawControlsInitial();
-            controlsSound.loadButtonNote();
-            controlsSound.start();
+            const app = new controlsApplication;
+
+            app.drawControlsInitial();
+            app.loadButtonGroup();
+            app.start();
         </script>
     </body>
 </html>

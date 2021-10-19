@@ -1,0 +1,21 @@
+{
+  "name": "english-phonecs",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Pyedrown/english-phonecs-vanilla.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Pyedrown/english-phonecs-vanilla/issues"
+  },
+  "homepage": "https://github.com/Pyedrown/english-phonecs-vanilla#readme",
+  "dependencies": {}
+}

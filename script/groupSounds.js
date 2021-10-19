@@ -1,4 +1,3 @@
-
 const groupSounds = [
     {
         name: 'group 1',
@@ -253,5 +252,3 @@ const groupSounds = [
         selected: false
     },
 ]
-
-export default groupSounds;

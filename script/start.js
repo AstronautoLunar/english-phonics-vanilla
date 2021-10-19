@@ -1,5 +1,3 @@
-import ControlsApplication from "./main.js";
-
 const app = new ControlsApplication;
 
 app.drawControlsInitial();

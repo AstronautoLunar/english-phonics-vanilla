@@ -1,18 +1,3 @@
-import {
-    areaInitial,
-    areaOptions,
-    areaSound,
-    buttonStart,
-    divAreaAudio,
-    divAreaButtonsSoundLetter,
-    divButtonsSoundLetter,
-    divPlayMusic,
-    imagePlay
-} from './elements.js';
-import groupSounds from './groupSounds.js';
-
-let start = false;
-
 class ControlsApplication {
     constructor() {
         
@@ -110,8 +95,6 @@ class ControlsApplication {
                     areaInitial.style.display = "none";
                 }, 300)
             }, 300)
-
-            start = true;
 
             setTimeout(() => {
                 this.loadChosenGroups();
@@ -280,5 +263,3 @@ class ControlsApplication {
         };
     }
 }
-
-export default ControlsApplication;

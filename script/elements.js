@@ -7,3 +7,4 @@ const divButtonsSoundLetter = window.document.createElement('div');
 const divPlayMusic = window.document.createElement('div');
 const divAreaButtonsSoundLetter = window.document.createElement('div');
 const imagePlay = new Image();
+const buttonNextLetter = window.document.createElement('button');

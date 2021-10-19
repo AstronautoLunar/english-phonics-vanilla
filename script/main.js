@@ -130,9 +130,9 @@ class ControlsApplication {
     }
 
     renderAudioAndEvent() {
-        this.audio.src = this.storageGroupChosen[this.indexGroupChosen].sound[this.indexGroupSoundChosen].src;
+        this.audio.src = this.allSoundsChosen[this.indexGroupSoundChosen].src;
 
-        let timerDivPlayMusic
+        let timerDivPlayMusic;
 
         divPlayMusic.onclick = () => {
             divPlayMusic.classList.add('jump-out');
@@ -162,37 +162,29 @@ class ControlsApplication {
         });
     }
 
-    loadInterface() {
-        this.randomNumber();
-        this.createAreaAudio();
-        this.createDivPlayMusic();
-        this.createImagePlay();
-        this.renderAudioAndEvent()
-        this.renderAreaButtonsSoundLetter();
-        this.takeSoundsOutOfGroups();
-
-        let timerDivPlayMusic;
-
+    createLetterSoundsChosen() {
         this.allSoundsChosen.forEach((item, index) => {
             divAreaButtonsSoundLetter.innerHTML += `
             <div class="letter-sound" data-key="${index}">
                 ${item.name}
             </div>`
         })
+    }
 
-        const letterSoundChosen = window.document.querySelectorAll("div.letter-sound");
-
+    returnRenderStyleDivPlay() {
         let timerReturnStyleDivPlay;
 
-        function returnStyleDivPlay() {
-            clearTimeout(timerReturnStyleDivPlay);
+        clearTimeout(timerReturnStyleDivPlay);
 
-            timerReturnStyleDivPlay = setTimeout(() => {
-                divPlayMusic.style.backgroundColor = "var(--shimmering-blush)";
+        timerReturnStyleDivPlay = setTimeout(() => {
+            divPlayMusic.style.backgroundColor = "var(--shimmering-blush)";
 
-                imagePlay.src = "./assets/icons/icon-play.svg";
-            }, 1500);
-        }
+            imagePlay.src = "./assets/icons/icon-play.svg";
+        }, 1500);
+    }
+
+    renderLogicButtonChosen() {
+        const letterSoundChosen = window.document.querySelectorAll("div.letter-sound");
 
         let timerNotes;
 
@@ -213,7 +205,7 @@ class ControlsApplication {
                     
                         this.noteHit = true;
                         
-                        returnStyleDivPlay();
+                        this.returnRenderStyleDivPlay();
                     } else {
                         divPlayMusic.style.background = "#fa7b7b";
                         imagePlay.src = "./assets/icons/icon-note-wrong.svg";
@@ -225,21 +217,24 @@ class ControlsApplication {
                             divPlayMusic.classList.remove('note-wrong');
                         }, 300);
                         
-                        returnStyleDivPlay();
+                        this.returnRenderStyleDivPlay();
                 }
             }
         })
+    }
 
-        const buttonNextNote = window.document.createElement('button');
-        buttonNextNote.setAttribute('id', 'button-next-note');
-        buttonNextNote.innerText = "Próxima nota";
-        divAreaAudio.appendChild(buttonNextNote);
+    createButtonNextLetter() {
+        buttonNextLetter.setAttribute('id', 'button-next-note');
+        buttonNextLetter.innerText = "Próxima nota";
+        divAreaAudio.appendChild(buttonNextLetter);
+    }
 
+    renderLogicButtonNextLetter() {
         let oldSelectedNote = null;
 
         let timerButtonNextNote;
 
-        buttonNextNote.onclick = () => {
+        buttonNextLetter.onclick = () => {
             this.randomNumber();
             
             for(let i = 1; i <= 3; i++) {
@@ -254,12 +249,27 @@ class ControlsApplication {
 
             this.audio.src = this.allSoundsChosen[this.indexGroupSoundChosen].src;
 
-            buttonNextNote.style.animation = "jump-out 200ms";
+            buttonNextLetter.style.animation = "jump-out 200ms";
 
             clearTimeout(timerButtonNextNote);
             timerButtonNextNote = setTimeout(() => {
-                buttonNextNote.style.animation = "";
+                buttonNextLetter.style.animation = "";
             }, 300)
         };
+    }
+
+    loadInterface() {
+        this.randomNumber();
+        this.takeSoundsOutOfGroups();
+        this.createAreaAudio();
+        this.createDivPlayMusic();
+        this.createImagePlay();
+        this.renderAudioAndEvent()
+        this.renderAreaButtonsSoundLetter();
+        this.createLetterSoundsChosen();
+        this.returnRenderStyleDivPlay();
+        this.renderLogicButtonChosen();
+        this.createButtonNextLetter();
+        this.renderLogicButtonNextLetter();
     }
 }

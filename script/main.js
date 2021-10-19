@@ -1,7 +1,6 @@
 class ControlsApplication {
     constructor() {
         
-
         this._noteHit = null;
         this._storageGroupChosen = null;
         this._selectedGroup = null;
@@ -9,6 +8,7 @@ class ControlsApplication {
         this._indexGroupSoundChosen = null;
         this._audio = new Audio();
         this._allSoundsChosen = [];
+        this._sourceExactSoundLetter = null;
     }
 
     set noteHit(value) {
@@ -61,6 +61,13 @@ class ControlsApplication {
         return this._allSoundsChosen;
     }
 
+    set sourceExactSoundLetter(value) {
+        this._sourceExactSoundLetter = value;
+    }
+    get sourceExactSoundLetter() {
+        return this._sourceExactSoundLetter;
+    }
+
     drawControlsInitial() {
         for(let i of groupSounds) {
             areaOptions.innerHTML += `<li class="button-group">${i.name}</li>`
@@ -108,8 +115,9 @@ class ControlsApplication {
     }
 
     randomNumber() {
-        this.indexGroupChosen = Math.floor(Math.random() * this.storageGroupChosen.length);
-        this.indexGroupSoundChosen = Math.floor(Math.random() * 6);
+        this.indexGroupSoundChosen = Math.floor(Math.random() * this.allSoundsChosen.length);
+
+        this.sourceExactSoundLetter = this.allSoundsChosen[this.indexGroupSoundChosen].src
     }
 
     createAreaAudio() {
@@ -130,12 +138,14 @@ class ControlsApplication {
     }
 
     renderAudioAndEvent() {
-        this.audio.src = this.allSoundsChosen[this.indexGroupSoundChosen].src;
+        this.audio.src = this.sourceExactSoundLetter;
 
         let timerDivPlayMusic;
 
         divPlayMusic.onclick = () => {
             divPlayMusic.classList.add('jump-out');
+
+            console.log(this.allSoundsChosen[this.indexGroupSoundChosen].src);
 
             clearTimeout(timerDivPlayMusic);
             timerDivPlayMusic = setTimeout(() => {
@@ -247,7 +257,7 @@ class ControlsApplication {
             
             oldSelectedNote = this.indexGroupSoundChosen;
 
-            this.audio.src = this.allSoundsChosen[this.indexGroupSoundChosen].src;
+            this.audio.src = this.sourceExactSoundLetter;
 
             buttonNextLetter.style.animation = "jump-out 200ms";
 
@@ -257,10 +267,10 @@ class ControlsApplication {
             }, 300)
         };
     }
-
+    
     loadInterface() {
-        this.randomNumber();
         this.takeSoundsOutOfGroups();
+        this.randomNumber();
         this.createAreaAudio();
         this.createDivPlayMusic();
         this.createImagePlay();

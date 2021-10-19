@@ -13,7 +13,8 @@ div#area-initial,
 div#area-audio,
 div#play-sound,
 div#area-button-sound,
-div.letter-sound
+div.letter-sound,
+ul#options
 {
     display: flex;
 }
@@ -40,12 +41,20 @@ div#area-initial {
     width: 100%;
 }
 
+ul#options {
+    flex-flow: column wrap;
+    justify-content: center;
+    align-items: center;
+    
+    height: 250px;
+}
+
 li.button-group {
     list-style-type: none;
 
     padding: 10px;
 
-    font-size: 20px;
+    font-size: 25px;
 
     color: var(--papaya-whip);
 
@@ -181,25 +190,6 @@ div.letter-sound
     align-items: center;
 }
 
-/* div.sound-chosen {
-    width: 50px;
-    height: 50px;
-
-    background-color: var(--shimmering-blush);
-
-    border-radius: 100%;
-
-    padding: 10px;
-
-    color: var(--papaya-whip);
-
-    font-size: 25px;
-
-    margin: 10px;
-
-    cursor: pointer;
-} */
-
 div.letter-sound {
     width: 50px;
     height: 50px;
@@ -277,7 +267,11 @@ button#button-next-note {
     color: var(--papaya-whip);
 }
 
-@media screen and (max-width: 652px) {
+@media screen and (max-width: 908px) {
+    main#main {
+        margin-bottom: 1.5rem;
+    }
+
     div#play-sound:hover,
     div.letter-sound:hover,
     button#button-next-note:hover,
@@ -291,9 +285,9 @@ button#button-next-note {
     }
 
     div#area-sound {
-        width: calc(100% - 100px);
+        width: calc(100% - 50px);
     
-        margin-top: 2.7rem;
+        margin-top: 1.5rem;
     }
 
     div#area-initial {
@@ -303,10 +297,13 @@ button#button-next-note {
     }
 
     ul#options {
-        display: flex;
         justify-content: center;
         align-items: center;
         flex-wrap: wrap;
+
+        flex-flow: row wrap;
+
+        height: auto;
 
         margin: 0 2rem 3rem;
     }

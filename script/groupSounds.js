@@ -1,7 +1,7 @@
 
 const groupSounds = [
     {
-        name: 'group1',
+        name: 'group 1',
         sound: [
             {
                 name: 'a',
@@ -37,7 +37,7 @@ const groupSounds = [
         selected: false
     },
     {
-        name: 'group2',
+        name: 'group 2',
         sound: [
             {
                 name: 'ck',
@@ -73,7 +73,7 @@ const groupSounds = [
         selected: false
     },
     {
-        name: 'group3',
+        name: 'group 3',
         sound: [
             {
                 name: 'b',
@@ -109,7 +109,7 @@ const groupSounds = [
         selected: false
     },
     {
-        name: 'group4',
+        name: 'group 4',
         sound: [
             {
                 name: 'ai',
@@ -145,7 +145,7 @@ const groupSounds = [
         selected: false
     },
     {
-        name: 'group5',
+        name: 'group 5',
         sound: [
             {
                 name: 'ng',
@@ -181,7 +181,7 @@ const groupSounds = [
         selected: false
     },
     {
-        name: 'group6',
+        name: 'group 6',
         sound: [
             {
                 name: 'ch',
@@ -217,7 +217,7 @@ const groupSounds = [
         selected: false
     },
     {
-        name: 'group7',
+        name: 'group 7',
         sound: [
             {
                 name: 'ar',

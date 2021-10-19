@@ -82,7 +82,7 @@ class ControlsApplication {
         }
     }
 
-    loadButtonGroup() {
+    loadSelectButtonGroup() {
         let buttonsGroup = window.document.querySelectorAll("li.button-group");
 
         for(let i = 0; i <= buttonsGroup.length; i++) {
@@ -129,7 +129,7 @@ class ControlsApplication {
         this.indexGroupSoundChosen = Math.floor(Math.random() * 6);
     }
 
-    renderAreaAudio() {
+    createAreaAudio() {
         divAreaAudio.setAttribute('id', 'area-audio');
         areaSound.appendChild(divAreaAudio);
     }
@@ -140,7 +140,6 @@ class ControlsApplication {
     }
 
     createImagePlay() {
-        // const imagePlay = new Image();
         imagePlay.src = "./assets/icons/icon-play.svg";
         imagePlay.setAttribute('alt', 'icon play sound')
         imagePlay.style.width = "35%";
@@ -178,12 +177,11 @@ class ControlsApplication {
         this.storageGroupChosen.forEach(item => {
             this.allSoundsChosen.push(...item.sound);
         });
-        console.log(this.allSoundsChosen);
     }
 
     loadInterface() {
         this.randomNumber();
-        this.renderAreaAudio();
+        this.createAreaAudio();
         this.createDivPlayMusic();
         this.createImagePlay();
         this.renderAudioAndEvent()

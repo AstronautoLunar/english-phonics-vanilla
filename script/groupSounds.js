@@ -153,7 +153,7 @@ const groupSounds = [
                 alt: "audio sound ng"
             },
             {
-                name: 'oo-strong',
+                name: 'OO',
                 src: './assets/audios/group5/oo-strong.mp3',
                 alt: "audio sound oo-strong"
             },
@@ -194,7 +194,7 @@ const groupSounds = [
                 alt: "audio sound sh"
             },
             {
-                name: 'th-blow',
+                name: 'TH',
                 src: './assets/audios/group6/th-blow.mp3',
                 alt: "audio sound th-blow"
             },
